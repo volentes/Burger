@@ -27,7 +27,7 @@ var orm = {
     // Function that will return all the table values
     selectAll: function (tableInput, cb) {
         // Query string that returns all the rows from the table
-        var queryString = "SELECT * FROM" + tableInput + ";"; 
+        var queryString = "SELECT * FROM " + tableInput + ";"; 
         // Performs the database query
         connection.query(queryString, function(err, result){
             if (err) {
@@ -39,31 +39,31 @@ var orm = {
     },
     
     // Function that inserts one entry into the table 
-    insertOne: function (table, cols, vals, cb){
-        // Query string that inserts a row into the table 
-        var queryString = "INSERT INTO" + table; 
+    insertOne: function(table, cols, vals, cb) {
+		// Construct the query string that inserts a single row into the target table
+		var queryString = "INSERT INTO " + table;
 
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ")";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
+		queryString += " (";
+		queryString += cols.toString();
+		queryString += ") ";
+		queryString += "VALUES (";
+		queryString += printQuestionMarks(vals.length);
+		queryString += ") ";
 
-        console.log(queryString);
-        
-        // Performs the database query
-        connection.query(queryString, vals, function(err, result){
-            if (err) {
-                throw err; 
-            }
-            // Returns the result in a callback 
-            cb(result);
-        });
-    },
+		console.log(queryString);
 
+		// Perform the database query
+		connection.query(queryString, vals, function(err, result) {
+			if (err) {
+				throw err;
+			}
+
+			// Return results in callback
+			cb(result);
+		});
+    },    
     // Function that updates one entry in the table 
-    updateOne: function (table, onjColVals, condition, cb) {
+    updateOne: function (table, objColVals, condition, cb) {
         // Query string that updates a row in the table 
         var queryString = "UPDATE" + table;
 

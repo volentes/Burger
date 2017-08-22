@@ -20,6 +20,9 @@ var burger = {
 
     // The objColVals is an object specifying columns as object keys with associated values
     updateOne: function(objColVals, condition, cb){
+        console.log(objColVals);
+        console.log(condition);
+        console.log(cb);
         orm.updateOne('burgers',objColVals, condition, function(res){
             cb(res);
         })
@@ -27,4 +30,4 @@ var burger = {
 };
 
 // Exports the database functions for the controller (burgers_controller.js)
-module.export = burger; 
+module.exports = burger; 

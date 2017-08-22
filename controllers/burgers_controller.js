@@ -6,32 +6,36 @@ var router = express.Router();
 var burger = require('../models/burger.js');
 
 // Creates the routes 
+
+// Getting the seeds info from the database and rendering it to the page
+// Displays the burgers to be devoured and the burgers already devoured
 router.get('/', function(req, res) {
   burger.selectAll(function(data) {
     var hbsObject = {
       burgers: data
     };
-    // console.log(hbsObject);
+    console.log("in there");
     res.render('index', hbsObject);
   });
 });
 
-router.post('/burgers', function(req, res) {
-  burger.insertOne([
-    'burger_name'
-  ], [
-    req.body.burger_name
-  ], function(data) {
+//Creates a new burger and displays it on the left side of page
+router.post('/', function(req, res) {
+  burger.insertOne(
+    ['burger_name'], [req.body.burger_name], function() {
     res.redirect('/');
   });
+//  console.log(res);
+//  console.log(req);
 });
 
-router.put('/burgers/:id', function(req, res) {
+// "devours" the burger created by the user
+router.put('/:id', function(req, res) {
   var condition = 'id = ' + req.params.id;
 
   burger.updateOne({
-    devoured: true
-  }, condition, function(data) {
+    devoured: "true"
+  }, condition, function() {
     res.redirect('/');
   });
 });
