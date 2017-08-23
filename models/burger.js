@@ -23,9 +23,9 @@ var burger = {
         console.log(objColVals);
         console.log(condition);
         console.log(cb);
-        orm.updateOne('burgers',objColVals, condition, function(res){
+        orm.updateOne('burgers', objColVals, condition, function(res){
             cb(res);
-        })
+        });
     }
 };
 
