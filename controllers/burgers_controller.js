@@ -21,12 +21,13 @@ router.get('/', function(req, res) {
 
 //Creates a new burger and displays it on the left side of page
 router.post('/', function(req, res) {
+  console.log(res);
   burger.insertOne(
     ['burger_name'], [req.body.burger_name], function() {
     res.redirect('/');
   });
-//  console.log(res);
-//  console.log(req);
+  
+  //console.log(req);
 });
 
 // "devours" the burger created by the user

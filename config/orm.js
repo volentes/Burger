@@ -40,7 +40,7 @@ var orm = {
     
     // Function that inserts one entry into the table 
     insertOne: function(table, cols, vals, cb) {
-		// Construct the query string that inserts a single row into the target table
+		// Constructs the query string that inserts a single row into the target table
 		var queryString = "INSERT INTO " + table;
 
 		queryString += " (";

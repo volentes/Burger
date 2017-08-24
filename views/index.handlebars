@@ -27,7 +27,7 @@
                             <p>{{this.burger_name}}</p>
                             <form action="/{{this.id}}?_method=PUT" method="POST">
                              <button class = "btn btn-sm btn-warning" type="submit">Devour It!</button>
-                             </form>
+                            </form>
                           </li>
                         </div>
                         {{/unless}}
@@ -37,7 +37,7 @@
 
             <!--Creates an input form-->
             <div class="col-xs-4">
-                <form action="/?_method=PUT" method="POST">
+                <form action="/" method="POST">
                   <input type="text" class="form-control" id="submit-burger" name="burger_name" placeholder="Burger Name">
                   <button class = "btn btn-primary" id ="submit" type="submit">submit</button><br><br>
                   <p>Create a New Burger</p>
